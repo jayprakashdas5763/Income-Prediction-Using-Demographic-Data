@@ -1,9 +1,0 @@
-,0
-rows_after_cleaning,29781
-roc_auc_random_forest,0.9048457614534924
-pr_auc_random_forest,0.7802193073511898
-roc_auc_logistic,0.9148685263122849
-pr_auc_logistic,0.7996711492757509
-hours_feature_in_dataset,True
-education_years_feature_in_dataset,True
-age_feature_in_dataset,True
