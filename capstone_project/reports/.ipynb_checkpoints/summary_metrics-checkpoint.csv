@@ -1,0 +1,6 @@
+,0
+rows_after_cleaning,22010
+roc_auc_random_forest,0.8899336266184786
+hours_feature_in_dataset,True
+education_years_feature_in_dataset,True
+age_feature_in_dataset,True

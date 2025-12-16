@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Model Performance Report</title>
+    <!-- Load Tailwind CSS for modern, aesthetic styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the specific visual elements */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        /* Custom progress bar styles */
+        .progress-bar-container {
+            height: 10px;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 9999px;
+        }
+
+        .score-bar-container {
+            height: 8px;
+            background-color: #f3f4f6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-bar {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* Colors based on the screenshot, mapped to Tailwind classes */
+        .accuracy-color { background-color: #f59e0b; } /* Amber/Orange */
+        .class0-color { background-color: #10b981; } /* Emerald/Teal */
+        .class1-color { background-color: #3b82f6; } /* Blue */
+
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col items-center justify-center min-h-screen p-4 font-sans">
+
+    <div class="max-w-4xl w-full">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-1">Classification Model Performance Report</h1>
+            <p class="text-lg text-gray-500">Visualizing Key Metrics for Binary Classification</p>
+        </header>
+
+        <!-- 1. Overall Model Accuracy Card -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">Overall Model Accuracy</h2>
+            <div class="text-center mb-6">
+                <!-- Changed accuracy score color from 'accuracy-color' to 'text-gray-900' -->
+                <span class="text-6xl font-extrabold text-gray-900">82.12%</span>
+            </div>
+            
+            <!-- Accuracy Progress Bar -->
+            <div class="progress-bar-container mb-2">
+                <div class="progress-bar accuracy-color" style="width: 82.12%;"></div>
+            </div>
+
+            <p class="text-sm text-gray-500 text-center">Total Samples (Support): 5,957</p>
+        </div>
+
+        <!-- 2. Classification Report Table Card -->
+        <div class="card">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Classification Report</h2>
+            
+            <!-- Table Header -->
+            <div class="grid grid-cols-6 text-sm font-semibold text-gray-600 border-b pb-2 mb-4 uppercase tracking-wider">
+                <div class="col-span-2">Class</div>
+                <div>Precision</div>
+                <div>Recall</div>
+                <div>F1-Score</div>
+                <div class="text-right">Support</div>
+            </div>
+
+            <!-- Class 0 Row (Low Income: <= $50K) -->
+            <div class="grid grid-cols-6 items-center py-3 border-b border-gray-100">
+                <!-- Class Label -->
+                <div class="col-span-2 font-bold text-lg text-gray-700">
+                    0 (<span class="text-purple-600">≤$50K</span>)
+                </div>
+
+                <!-- Precision -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.9422</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class0-color" style="width: 94.22%;"></div>
+                    </div>
+                </div>
+
+                <!-- Recall -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.8111</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class0-color" style="width: 81.11%;"></div>
+                    </div>
+                </div>
+
+                <!-- F1-Score -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.8718</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class0-color" style="width: 87.18%;"></div>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="text-right font-bold text-lg text-gray-700">4,463</div>
+            </div>
+
+            <!-- Class 1 Row (High Income: > $50K) -->
+            <div class="grid grid-cols-6 items-center py-3">
+                <!-- Class Label -->
+                <div class="col-span-2 font-bold text-lg text-gray-700">
+                    1 (<span class="text-blue-600">>$50K</span>)
+                </div>
+
+                <!-- Precision -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.6014</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class1-color" style="width: 60.14%;"></div>
+                    </div>
+                </div>
+
+                <!-- Recall -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.8514</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class1-color" style="width: 85.14%;"></div>
+                    </div>
+                </div>
+
+                <!-- F1-Score -->
+                <div class="text-sm">
+                    <span class="font-semibold">0.7049</span>
+                    <div class="score-bar-container mt-1">
+                        <div class="score-bar class1-color" style="width: 70.49%;"></div>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="text-right font-bold text-lg text-gray-700">1,494</div>
+            </div>
+            
+            <!-- Summary Footer -->
+            <div class="mt-6 pt-4 border-t text-sm text-gray-600 font-medium">
+                <p>Macro Avg F1: <span class="font-bold text-gray-800">0.7883</span> | Weighted Avg F1: <span class="font-bold text-gray-800">0.8299</span></p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
